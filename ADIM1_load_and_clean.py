@@ -1,0 +1,1 @@
+#veri yükleme ve temizleme
