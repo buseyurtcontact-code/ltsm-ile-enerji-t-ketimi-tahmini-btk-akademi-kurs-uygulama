@@ -1,1 +1,5 @@
 venv/
+household_power_consumption.txt
+*.csv
+*.npy
+scaler.save
