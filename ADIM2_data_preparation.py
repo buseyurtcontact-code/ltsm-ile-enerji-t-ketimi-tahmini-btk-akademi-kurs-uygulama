@@ -1,4 +1,4 @@
-# verileri hazırlama kısmı 
+# verileri hazırlama kısmı - veri ön işleme 
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler  # Verileri ölçeklemek yani normalize etmek
 import pandas as pd
