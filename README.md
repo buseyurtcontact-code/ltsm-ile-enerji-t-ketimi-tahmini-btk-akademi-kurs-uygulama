@@ -1,4 +1,4 @@
-# ltsm-ile-enerji-t-ketimi-tahmini-btk-akademi-kurs-uygulama
+# lstm-ile-enerji-t-ketimi-tahmini-btk-akademi-kurs-uygulama
 """
 LSTM ile Enerji Tüketimi Tahmini
 
@@ -33,5 +33,10 @@ Plan/Program:
     - gelecek tahmini önümüzdeki 24 saatlik geleceği tahmin etmeye çalışacağız 
 
     install libraries: freeze
-pip install pandas veri bilimi numpy  umeric matplotlib görselleştirme scikit-learn makine öğrenmesi tensorflow derin öğrenme algoritması lstm için
+pip install
+pandas veri bilimi 
+numpy  numeric
+matplotlib görselleştirme
+scikit-learn makine öğrenmesi 
+tensorflow derin öğrenme algoritması lstm için
 """
