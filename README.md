@@ -54,3 +54,30 @@ tensorflow derin öğrenme algoritması lstm için
 * **Model Kapasitesi & Yetersiz Öğrenme (Underfitting):** Eğer her iki kayıp değeri de yüksek kalırsa, modelin öğrenme kapasitesini artırmak için LSTM katman sayısı veya nöron sayısı yükseltilebilir.
 * **Ezberleme (Overfitting):** Eğitim kaybı düşerken doğrulama kaybı yüksek kalır ve iki çizgi arasındaki fark açılırsa model ezber yapıyor demektir; bu durumda Dropout katmanları veya regülasyon teknikleri uygulanmalıdır.
 """
+## 📊 Gelecek 24 Saatlik Tahmin Performansı ve Grafik Analizi
+
+Projenin son aşamasında, eğitilen LSTM modeli kullanılarak gelecek 24 saatlik enerji tüketimi (**kWh**) otoragresif (iteratif) yöntemle tahmin edilmiş ve gerçek değerlerle karşılaştırılmıştır.
+
+![Gelecek 24 Saatlik Tahmin](gelecek_24saat_tahmini.png)
+
+### 🔍 Detaylı Grafik Analizi
+
+1. **Trend ve Sezonluk Uyumluluk (Trend Tracking):**
+   * **Gece Düşüşü (0–5. Saatler):** Model, günün ilk saatlerindeki tüketim düşüşünü ve dip noktasını (~0.5 kWh) yüksek bir başarıyla yakalamıştır.
+   * **Genel Eğilim:** Gerçek verideki yükseliş ve düşüş trendlerine paralel bir hareket sergilemekte; zaman serisinin genel paternini doğru öğrenmektedir.
+
+2. **Pik Tüketim Noktaları (Peak Demand / Outliers):**
+   * **9–10. Saat Piki:** Gerçek tüketim verisinde günün sabah saatlerinde aniden ortaya çıkan keskin talep artışı (~2.8 kWh) gözlemlenmiştir.
+   * Model bu noktada bir artış öngörse de (~1.4 kWh seviyesi), pikin şiddetini tam olarak yakalayamamış ve çıktıyı yumuşatma (smoothing) eğilimi göstermiştir. Bu durum, tek değişkenli (univariate) zaman serisi modellerinde ani talep sıçramalarında sıkça karşılaşılan bir davranıştır.
+
+3. **Otoragresif Hata Birikimi (Error Propagation):**
+   * Tahmin ufku ilerledikçe (15–24. saatler), model kendi ürettiği geçmiş tahminleri girdi olarak kullanmaya devam ettiği için tahmin çizgisi gerçek veriye kıyasla daha durağan/ortalama bir hatta çekilmiştir.
+
+---
+
+### 💡 Sonuç ve Gelecek Çalışmalar (Future Improvements)
+
+* **Mevcut Durum:** Tek bir geçmiş tüketim değişkeni kullanılarak inşa edilen bu temel LSTM mimarisi, genel enerji tüketim seviyesini ve günlük ritmi başarılı bir şekilde temsil etmektedir.
+* **Modeli Geliştirme Önerileri:**
+  * **Çok Değişkenli Yapı (Multivariate Forecasting):** Saat, gün (hafta içi/hafta sonu), takvim etkileri ve hava sıcaklığı gibi dışsal değişkenlerin (exogenous features) modele eklenmesi, 9. saatteki gibi ani piklerin daha hassas öğrenilmesini sağlayabilir.
+  * **Seq2Seq Architecture:** Adım adım (step-by-step) tahmin yerine Encoder-Decoder tabanlı Seq2Seq LSTM yapısına geçilerek uzun vadeli tahminlerdeki hata birikimi azaltılabilir.

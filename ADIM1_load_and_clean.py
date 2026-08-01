@@ -19,7 +19,7 @@ df.drop(columns=['Date', 'Time'], inplace=True)
 # Datetime sütununu tablonun indeksi yaptık 
 df.set_index('datetime', inplace=True)
 
-# İlk 5 satırı görüntüleyin
+# İlk 5 satırı görüntüleyinpython ADIM1_load_and_clean.py
 print(df.head())
 
 # ---------------------------------------------------------
@@ -72,4 +72,3 @@ print("Grafik 'enerji_tuketimi.png' olarak kaydedildi!")
 # Saatlik yeniden örneklenmiş veriyi kaydet
 # index=True diyerek datetime indeksimizi de CSV'ye yazmış oluyoruz (Varsayılanı zaten True'dur)
 df_hourly.to_csv("df_hourly.csv", index=True)
-

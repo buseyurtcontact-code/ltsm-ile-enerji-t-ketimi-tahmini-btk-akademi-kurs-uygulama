@@ -26,7 +26,8 @@ model.add(Dense(1)) #tek çıkışlı tam bağlantılı bir katman, sadece 1 saa
 
 # model compile (derleme) 
 model.compile(
-    optimizer="adam",  
+    optimizer="adam", 
+    loss='mean_squared_error'
 #yaygı olarak kullaılan optimizasyon algoritması adam foksiyonu kullandık, hızlıdır adaptif öğrenir (adaptif öğrenme: # Adaptif Öğrenme (Adaptive Learning): Optimizatörün (örn: Adam), eğitimin gidişatına ve 
 # hataya göre öğrenme oranını (adımlarının büyüklüğünü) otomatik olarak ayarlamasıdır. 
 # Başta büyük adımlarla hızlı öğrenir, hedefe yaklaştıkça hassas ayar için adımları küçültür.
